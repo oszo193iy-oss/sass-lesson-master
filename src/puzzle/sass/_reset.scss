@@ -1,0 +1,9 @@
+body {
+  width: 100%;
+  margin: 0;   // ★これがブラウザの自動余白を消す命令です
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}

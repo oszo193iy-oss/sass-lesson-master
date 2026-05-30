@@ -1,0 +1,18 @@
+@use 'variable' as *;
+@mixin set-box-colors {
+  // width: 140px;
+  // height: 40px;
+    @each $name in $classNames {
+      $i: index($classNames, $name); // 何番目の要素かを取得 (1, 2, 3)
+      &--#{$name} {
+        background-color:  nth($buttonColor, $i);
+      }
+    }
+}
+
+@mixin flex($justify: flex-start, $align: stretch, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}

@@ -1,0 +1,83 @@
+// メイン
+@use 'variable' as *;
+@use 'mixin' as *;
+
+.container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+ .header {
+  width: 400px;
+  height: 100px;
+  background-color:$navy;
+  padding: 20px;
+  @include flex(flex-end, flex-start); // @includeはmixinで定愚したものを呼び出す
+
+margin-bottom: 0;
+
+  &__box-group {
+    background-color: $white;
+    padding: 10px;
+    @include flex;
+    gap: 10px;
+  }
+  &__box {
+    width: 40px;
+    height: 40px;
+
+    @each $name in $classNames {
+      $i: index($classNames, $name); // 何番目の要素かを取得 (1, 2, 3)
+      &--#{$name} {
+        background-color: nth($buttonColor, $i);
+      }
+    }
+  }
+}
+
+.contents-area {
+  @include flex(center, flex-start);;
+  width: 400px;
+}
+
+.sidebar{
+  width: 150px;
+  height: 250px;
+  background-color: $green;
+  box-sizing: border-box;
+}
+
+
+.main{
+  width: 250px;
+  height: 250px;
+  background-color:$red;
+  position: relative;
+
+  @include flex(flex-start, flex-start, column);
+
+   &__contena{
+     position: absolute;
+     top: 40px;
+     left: 40px;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+    }
+
+    &__box{
+      width: 140px;
+      height: 40px;
+      background-color: $white;
+      border: 5px solid $white;
+      box-sizing: content-box;
+
+    @include set-box-colors;
+  }
+}
+
+.footer{
+  width: 400px;
+  height: 100px;
+  background-color: $brown;
+}
