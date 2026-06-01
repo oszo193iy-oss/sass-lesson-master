@@ -12,7 +12,7 @@
 
 @mixin flex($justify: flex-start, $align: stretch, $direction: row) {
   display: flex;
-  justify-content: $justify;
-  align-items: $align;
-  flex-direction: $direction;
+  justify-content: $justify; // 横並び
+  align-items: $align; // 左寄り
+  flex-direction: $direction; // 上下は目一杯広げる
 }

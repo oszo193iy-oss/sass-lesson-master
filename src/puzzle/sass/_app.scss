@@ -12,9 +12,8 @@
   height: 100px;
   background-color:$navy;
   padding: 20px;
-  @include flex(flex-end, flex-start); // @includeはmixinで定愚したものを呼び出す
+  @include flex(flex-end, flex-start); // end = justify-content: flex-end; 右端に寄せる  start = align-items: flex-start;上端に寄せる
 
-margin-bottom: 0;
 
   &__box-group {
     background-color: $white;
@@ -36,7 +35,7 @@ margin-bottom: 0;
 }
 
 .contents-area {
-  @include flex(center, flex-start);;
+  @include flex(center, flex-start);
   width: 400px;
 }
 
