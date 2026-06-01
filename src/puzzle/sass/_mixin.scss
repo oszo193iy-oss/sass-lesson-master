@@ -1,18 +1,19 @@
-@use 'variable' as *; // as *=ファイル名書かないくていい
+@use 'variable' as var;
 
 @mixin set-box-colors { // @include set-box-colors;で呼び出す
 
-  @each $name in $classNames {
-    $i: index($classNames, $name); // 今処理している$nameは何番目の要素かを取得 (1, 2, 3)
+  @each $name in var.$classNames {
+    $i: index(var.$classNames, $name); // 今処理している$nameは何番目の要素かを取得 (1, 2, 3)
     &--#{$name} {
-      background-color:  nth($buttonColor, $i); // nth() リストの〇番目を取り出す
+      background-color:  nth(var.$buttonColor, $i); // nth() リストの〇番目を取り出す
     }
   }
 }
 
 @mixin flex($justify: flex-start, $align: stretch, $direction: row) {
-  display: flex;
-  justify-content: $justify; // 横並び
-  align-items: $align; // 左寄り
-  flex-direction: $direction; // 上下は目一杯広げる
+  // 要素を配置するときの「メインの向き（基本は横方向）」の並び方を決める
+  display: flex;// 横並び
+  justify-content: $justify; // 横並びや縦並びで並べた要素を左右（または上下）のどこに配置するかを決める位置調整
+  align-items: $align; // 複数の子要素を縦軸に沿って「上揃え、中央揃え、下揃え」
+  flex-direction: $direction; // 箱の中の要素を、横に並べるか、縦に並べるかという並ぶ向きのルート
 }

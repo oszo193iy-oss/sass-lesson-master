@@ -1,6 +1,6 @@
 // メイン
-@use 'variable' as *;
-@use 'mixin' as *;
+@use 'variable' as var;
+@use 'mixin' as mix;
 
 .container {
   width: 400px;
@@ -10,34 +10,34 @@
 .header {
   width: 400px;
   height: 100px;
-  background-color:$navy;
+  background-color:var.$navy;
   padding: 20px;
-  @include flex(flex-end, flex-start); // end = justify-content: flex-end; 右端に寄せる  start = align-items: flex-start;上端に寄せる
+  @include mix.flex(flex-end, flex-start); // end = justify-content: flex-end; 右端に寄せる  start = align-items: flex-start;上端に寄せる
 
 
   &__box-group {
-    background-color: $white;
+    background-color: var.$white;
     padding: 10px;
-    @include flex;
+    @include mix.flex;
     gap: 10px;
   }
   &__box {
     width: 40px;
     height: 40px;
 
-    @include set-box-colors;
+    @include mix.set-box-colors;
   }
 }
 
 .contents-area {
-  @include flex(center, flex-start);
+  @include mix.flex(center, flex-start); // 要素を横並び（flex）にして中央に寄せる
   width: 400px;
 }
 
 .sidebar{
   width: 150px;
   height: 250px;
-  background-color: $green;
+  background-color: var.$green;
   box-sizing: border-box;
 }
 
@@ -45,10 +45,10 @@
 .main{
   width: 250px;
   height: 250px;
-  background-color:$red;
+  background-color:var.$red;
   position: relative;
 
-  @include flex(flex-start, flex-start, column);
+  @include mix.flex(flex-start, flex-start, column); // column 並ぶ向きを「縦（上から下）」にする
 
   &__contena{
     position: absolute;
@@ -62,16 +62,16 @@
     &__box{
       width: 140px;
       height: 40px;
-      background-color: $white;
-      border: 5px solid $white;
+      background-color: var.$white;
+      border: 5px solid var.$white;
       box-sizing: content-box;
 
-      @include set-box-colors;
+      @include mix.set-box-colors;
   }
 }
 
 .footer{
   width: 400px;
   height: 100px;
-  background-color: $brown;
+  background-color: var.$brown;
 }
